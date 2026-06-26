@@ -1,0 +1,10 @@
+GET http://127.0.0.1:8001/orders/01KW27VRAAGX51C46GQP3R7RMC HTTP/1.1
+
+###
+POST http://127.0.0.1:8001/orders HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": "01KVGAZ5Q2GXJNF9FX4EXHA5DQ",
+    "quantity": 2
+}
