@@ -1,0 +1,8 @@
+fastapi==0.75.0
+redis-om==0.0.20
+requests>=2.28.0
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+httpx>=0.24.0
+fakeredis>=2.19.0
+testcontainers>=3.7.0

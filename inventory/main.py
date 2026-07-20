@@ -1,12 +1,25 @@
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 from redis_om import get_redis_connection, HashModel
+from redis_om.model.model import NotFoundError
 
 load_dotenv()
 
 app = FastAPI()
+
+
+@app.exception_handler(NotFoundError)
+async def not_found_handler(request, exc):
+    return JSONResponse(status_code=404, content={"detail": "Product not found"})
+
+
+@app.exception_handler(Exception)
+async def general_exception_handler(request, exc):
+    return JSONResponse(status_code=500, content={"detail": str(exc)})
+
 
 app.add_middleware(
     CORSMiddleware,
